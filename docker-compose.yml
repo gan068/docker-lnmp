@@ -16,8 +16,7 @@ services:
           - "${NGINX_HOST_HTTPS_PORT}:443"
       depends_on:
           - php-fpm-71
-          - php-fpm-56
-          - php-fpm-55  
+          - php-fpm-73
 
 ### PHP-FPM Container #######################################
 
@@ -27,22 +26,14 @@ services:
         - ${NGINX_HTML_PATH}:/var/www/html
         - ${PHP_FPM_LOG_PATH}:/var/log/php-fpm
       depends_on:   
-          - mariadb   
-
-    php-fpm-56:
-      image: gan068/php:php56
-      volumes:
-        - ${NGINX_HTML_PATH}:/var/www/html
-        - ${PHP_FPM_LOG_PATH}:/var/log/php-fpm
-      depends_on:
           - mariadb
-
-    php-fpm-55:
-      image: gan068/php:php55
+    
+    php-fpm-73:
+      image: gan068/php:php73
       volumes:
         - ${NGINX_HTML_PATH}:/var/www/html
         - ${PHP_FPM_LOG_PATH}:/var/log/php-fpm
-      depends_on:
+      depends_on:   
           - mariadb
 
 ### MySQL Container #########################################
